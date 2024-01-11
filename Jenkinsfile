@@ -44,7 +44,8 @@ pipeline {
         stage('Publish Artifacts') {
             steps {
                 //input("Do you want to continue or not?")
-                echo 'Save the assemblies generated from the compilation' 
+                echo 'Save the assemblies generated from the compilation'
+                deploy adapters: [tomcat9(credentialsId: 'e7576e1f-393d-427b-b295-2e2bdda1e0a4', path: '', url: 'http://localhost:8088')], contextPath: 'anything', war: '**/*.war'
             }
         }
     }
